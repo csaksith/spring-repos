@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=hello-world-web
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.4.3
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Our first spring/maven project
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.hello
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=17
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=hello-world-web
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.hello
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=MAVEN
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=1.01
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n
