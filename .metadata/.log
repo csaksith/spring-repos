@@ -1689,3 +1689,6 @@ org.eclipse.core.runtime.AssertionFailedException: assertion failed:
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:670)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:607)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1492)
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-03-12 22:31:23.774
+!MESSAGE [Error]	Notification handler 'textDocument/didFocus' failed with message: Cannot use 'in' operator to search for 'textDocument' in null
