@@ -8,11 +8,11 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demo-web</groupId>
+	<groupId>com.demo</groupId>
 	<artifactId>demo-web</artifactId>
 	<version>1.01</version>
 	<name>demo-web</name>
-	<description>bmdb java web project</description>
+	<description>demo project</description>
 	<url/>
 	<licenses>
 		<license/>
