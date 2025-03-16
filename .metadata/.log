@@ -7061,3 +7061,53 @@ java.lang.NullPointerException: Cannot read field "displayText" because the retu
 	at com.genuitec.copilot4eclipse.CopilotEditSession.handleCompletionResult(CopilotEditSession.java:827)
 	at com.genuitec.copilot4eclipse.CompletionJob.run(CompletionJob.java:91)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.genuitec.copilot4eclipse 2 0 2025-03-16 17:35:51.752
+!MESSAGE Cannot read field "displayText" because the return value of "com.genuitec.copilot4eclipse.CompletionTracker.currentCompletion()" is null
+!STACK 0
+java.lang.NullPointerException: Cannot read field "displayText" because the return value of "com.genuitec.copilot4eclipse.CompletionTracker.currentCompletion()" is null
+	at com.genuitec.copilot4eclipse.CompletionTracker.activateCompletion(CompletionTracker.java:169)
+	at com.genuitec.copilot4eclipse.CopilotEditSession.focusOnCompletion(CopilotEditSession.java:833)
+	at com.genuitec.copilot4eclipse.CopilotEditSession.handleCompletionResult(CopilotEditSession.java:827)
+	at com.genuitec.copilot4eclipse.CompletionJob.run(CompletionJob.java:91)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2025-03-16 18:46:09.543
+!MESSAGE java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+!STACK 0
+java.util.concurrent.ExecutionException: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaCompletionProposalComputer.asJavaProposals(LSJavaCompletionProposalComputer.java:82)
+	at org.eclipse.lsp4e.jdt.LSJavaCompletionProposalComputer.computeCompletionProposals(LSJavaCompletionProposalComputer.java:54)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:353)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:340)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:332)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.AsyncCompletionProposalPopup.lambda$10(AsyncCompletionProposalPopup.java:378)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jface.text.contentassist.AsyncCompletionProposalPopup.lambda$9(AsyncCompletionProposalPopup.java:377)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at java.base/java.util.ArrayList.add(ArrayList.java:484)
+	at java.base/java.util.ArrayList.add(ArrayList.java:496)
+	at org.eclipse.lsp4e.internal.CancellationSupport.execute(CancellationSupport.java:41)
+	at org.eclipse.lsp4e.operations.completion.LSContentAssistProcessor.computeCompletionProposals(LSContentAssistProcessor.java:145)
+	at org.eclipse.lsp4e.jdt.LSJavaCompletionProposalComputer.lambda$0(LSJavaCompletionProposalComputer.java:51)
+	... 7 more
+
+!ENTRY com.genuitec.copilot4eclipse 2 0 2025-03-16 18:46:17.729
+!MESSAGE Cannot read field "displayText" because the return value of "com.genuitec.copilot4eclipse.CompletionTracker.currentCompletion()" is null
+!STACK 0
+java.lang.NullPointerException: Cannot read field "displayText" because the return value of "com.genuitec.copilot4eclipse.CompletionTracker.currentCompletion()" is null
+	at com.genuitec.copilot4eclipse.CompletionTracker.activateCompletion(CompletionTracker.java:169)
+	at com.genuitec.copilot4eclipse.CopilotEditSession.focusOnCompletion(CopilotEditSession.java:833)
+	at com.genuitec.copilot4eclipse.CopilotEditSession.handleCompletionResult(CopilotEditSession.java:827)
+	at com.genuitec.copilot4eclipse.CompletionJob.run(CompletionJob.java:91)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

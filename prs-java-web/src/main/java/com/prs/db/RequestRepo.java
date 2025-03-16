@@ -8,15 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.prs.model.Request;
 
-import jakarta.persistence.NamedQuery;
 public interface RequestRepo extends JpaRepository<Request, Integer> {
-	default Optional<String> findLatestRequestNumber(String datePrefix){
-		return findAll().stream()
-				.map(Request::getRequestNumber)
-				.filter(reqNbr->reqNbr.startsWith("R"+datePrefix))
+	default Optional<String> findLatestRequestNumber(String datePrefix) {
+		return findAll().stream().map(Request::getRequestNumber).filter(reqNbr -> reqNbr.startsWith("R" + datePrefix))
 				.max(Comparator.naturalOrder());
-	}	
-	List<Request> findByIdAndStatus(int userId,String status);
+	}
 
-} 
-
+	List<Request> findByUserIdAndStatus(int userId, String status);
+}

@@ -3,6 +3,7 @@ package com.prs.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,11 +44,11 @@ public class RequestController {
 		}
 	}
 
-	@GetMapping("/list-review/{UserId}")
-	public List<Request> listReview(@PathVariable int UserId) {
-		List<Request> r = requestRepo.findByIdAndStatus(UserId, "REVIEW");
+	@GetMapping("/list-review/{userId}")
+	public List<Request> listReview(@PathVariable int userId) {
+		List<Request> r = requestRepo.findByUserIdAndStatus(userId, "REVIEW");
 		if (r.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Request not found for UserId: " + UserId);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Request not found for UserId: " + userId);
 		} else {
 			return r;
 		}
@@ -92,6 +93,36 @@ public class RequestController {
 		return requestRepo.save(request);
 	}
 
+	@PutMapping("/approve/{id}")
+	public Request approve(@PathVariable int id) {
+		Optional<Request> optRequest = requestRepo.findById(id);
+		if (!optRequest.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Request not found.");
+		}
+		else {
+			Request request = optRequest.get();
+			request.setStatus("APPROVED");
+			request.setSubmittedDate(LocalDate.now());
+			return requestRepo.save(request);
+		}
+	}
+
+	@PutMapping("/reject/{id}")
+	public Request reject(@PathVariable int id,@RequestBody Map<String,String>reason) {
+		Optional<Request> optRequest = requestRepo.findById(id);
+		if (!optRequest.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Request not found.");
+		}
+		else {
+			Request request = optRequest.get();
+			request.setStatus("REJECTED");
+			request.setReasonForRejection(reason.get("reasonForRejection"));
+			request.setSubmittedDate(LocalDate.now());
+			return requestRepo.save(request);
+		}
+	}
+	
+	
 	@PostMapping("")
 	public Request add(@RequestBody Request request) {
 		// generate new request number
