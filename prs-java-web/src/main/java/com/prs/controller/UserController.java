@@ -65,23 +65,15 @@ public class UserController {
 		}
 	}
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
-	    String username = loginRequest.get("username");
-	    String password = loginRequest.get("password");
-	 
-	    Optional<User> userOptional = userRepo.findByUsername(username);
-	 
-	    if (userOptional.isPresent()) {
-	        User user = userOptional.get();
-	        if (user.getPassword().equals(password)) {
-	            // Hide password before returning response
-	            user.setPassword(null);
-	            return ResponseEntity.ok(user);
-	        } else {
-	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password.");
-	        }
-	    } else {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-	    }
+	public User login(@RequestBody User user) {
+		Optional<User> u = userRepo.findByUsernameAndPassword(user.getUsername(),user.getPassword());
+		if (u.isPresent()) {
+			return u.get();
+		}
+		else {
+			throw new ResponseStatusException(
+					HttpStatus.NOT_FOUND, "User not found.");
+		}
 	}
+
 }

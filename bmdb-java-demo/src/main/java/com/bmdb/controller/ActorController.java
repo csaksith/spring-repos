@@ -24,7 +24,7 @@ public class ActorController {
 		return actorRepo.findAll();
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public Optional<Actor> getById(@PathVariable int id) {
 	Optional<Actor> a = actorRepo.findById(id);
 		if (a.isPresent()) {

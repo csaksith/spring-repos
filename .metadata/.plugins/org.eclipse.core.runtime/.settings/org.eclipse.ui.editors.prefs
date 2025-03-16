@@ -72,6 +72,7 @@ searchResultTextStyle=BOX
 searchResultTextStyle,defaultValueBeforeOverriddenFromCSS=NONE
 secondaryIPColor=32,32,48
 secondaryIPColor,defaultValueBeforeOverriddenFromCSS=219,235,204
+spellingEnabled=false
 spellingIndicationColor=253,170,211
 spellingIndicationColor,defaultValueBeforeOverriddenFromCSS=255,128,64
 writeOccurrenceIndicationColor=67,67,4
