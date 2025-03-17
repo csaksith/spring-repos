@@ -61,7 +61,7 @@ public class RequestController {
 		Optional<String> latestReqNbr = requestRepo.findLatestRequestNumber(datePrefix);
 		String newReqNbr;
 		if (latestReqNbr.isPresent()) {
-			int last4Nbrs = Integer.parseInt(latestReqNbr.get().substring(7)) + 1;
+			int last4Nbrs = Integer.parseInt(latestReqNbr.get().substring(9)) + 1;
 			newReqNbr = String.format("%04d", last4Nbrs);
 		} else {
 			newReqNbr = "0001";
