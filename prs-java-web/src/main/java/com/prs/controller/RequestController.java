@@ -26,7 +26,7 @@ import com.prs.model.Request;
 import com.prs.model.RequestDTO;
 import com.prs.model.User;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/requests")
 public class RequestController {
@@ -125,7 +125,7 @@ private UserRepo userRepo;
 		}
 	}
 
-	@PostMapping
+	@PostMapping("")
 
 	public ResponseEntity<Request> createRequest(@RequestBody RequestDTO requestDTO) {
 		// Create a new Request object using DTO data

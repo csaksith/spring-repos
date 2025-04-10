@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.prs.db.ProductRepo;
 import com.prs.model.Product;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -41,7 +41,8 @@ public class ProductController {
 
 		}
 	}
-	@PostMapping("")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/")
 	public Product add(@RequestBody Product product) {
 		return productRepo.save(product);
 	}

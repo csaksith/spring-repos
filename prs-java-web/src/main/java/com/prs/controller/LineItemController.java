@@ -17,13 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.prs.db.LineItemRepo;
+import com.prs.db.ProductRepo;
 import com.prs.db.RequestRepo;
 import com.prs.model.LineItem;
+import com.prs.model.Product;
 import com.prs.model.Request;
 
 import jakarta.transaction.Transactional;
 
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/api/line-items")
 public class LineItemController {
@@ -31,6 +33,8 @@ public class LineItemController {
 	private LineItemRepo lineItemRepo;
 	@Autowired
 	private RequestRepo requestRepo;
+	@Autowired
+	private ProductRepo productRepo;
 
 	@Transactional
 	public void recalcTotal(int requestId) {
@@ -71,6 +75,17 @@ public class LineItemController {
 
 	@PostMapping("")
 	public LineItem add(@RequestBody LineItem lineItem) {
+		Optional<Request> requestOpt = requestRepo.findById(lineItem.getRequest().getId());
+		Optional<Product> productOpt = productRepo.findById(lineItem.getProduct().getId());
+		
+		if (requestOpt.isPresent() && productOpt.isPresent()) {
+			lineItem.setRequest(requestOpt.get());
+			lineItem.setProduct(productOpt.get());
+		} else {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request or Product not found");
+		}
+		
+		
 		LineItem savedLineItem = lineItemRepo.save(lineItem);
 		recalcTotal(savedLineItem.getRequest().getId());
 		return savedLineItem;
