@@ -69,13 +69,13 @@ public class User {
 		return reviewer;
 	}
 	public void setReviewer(boolean reviewer) {
-		reviewer = reviewer;
+		this.reviewer = reviewer;
 	}
 	public boolean isAdmin() {
 		return admin;
 	}
 	public void setAdmin(boolean admin) {
-		admin = admin;
+		this.admin = admin;
 	}
 	@Override
 	public String toString() {

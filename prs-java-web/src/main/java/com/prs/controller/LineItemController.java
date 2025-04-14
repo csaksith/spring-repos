@@ -44,7 +44,7 @@ public class LineItemController {
 		double total = lineItems.stream()
 				.mapToDouble(li -> li.getProduct() != null ? li.getProduct().getPrice() * li.getQuantity() : 0).sum();
 		request.setTotal(total);
-		request.setStatus(total <= 50 ? "APPROVED" : "NEW");
+//		request.setStatus(total <= 50 ? "APPROVED" : "NEW");
 		requestRepo.save(request);
 	}
 
