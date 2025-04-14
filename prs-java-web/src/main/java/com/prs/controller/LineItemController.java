@@ -25,7 +25,7 @@ import com.prs.model.Request;
 
 import jakarta.transaction.Transactional;
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/line-items")
 public class LineItemController {
@@ -65,16 +65,15 @@ public class LineItemController {
 
 	@GetMapping("/lines-for-req/{requestId}")
 	public List<LineItem> findByRequestId(@PathVariable int requestId) {
-		List<LineItem> li = lineItemRepo.findByRequestId(requestId);
-		if (li.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Line Item not found for id: " + requestId);
-		} else {
-			return li;
-		}
-	}
 
-	@PostMapping("")
+		return lineItemRepo.findByRequestId(requestId);
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+
+	@PostMapping("/")
 	public LineItem add(@RequestBody LineItem lineItem) {
+	    System.out.println("Received LineItem: " + lineItem);
+
 		Optional<Request> requestOpt = requestRepo.findById(lineItem.getRequest().getId());
 		Optional<Product> productOpt = productRepo.findById(lineItem.getProduct().getId());
 		
@@ -107,10 +106,14 @@ public class LineItemController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
-		if (lineItemRepo.existsById(id)) {
-			lineItemRepo.deleteById(id);
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "line item not found");
-		}
+	    Optional<LineItem> liOpt = lineItemRepo.findById(id);
+	    if (liOpt.isPresent()) {
+	        LineItem li = liOpt.get(); // This gets the line item before deleting
+	        int requestId=li.getRequest().getId();
+	        lineItemRepo.deleteById(id); // Now delete it
+	        recalcTotal(li.getRequest().getId()); // Now recalc total using request id
+	    } else {
+	        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "line item not found");
+	    }
 	}
 }

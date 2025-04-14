@@ -49,9 +49,9 @@ private UserRepo userRepo;
 		}
 	}
 
-	@GetMapping("/list-review/{userId}")
+	@GetMapping("/review/{userId}")
 	public List<Request> listReview(@PathVariable int userId) {
-		List<Request> r = requestRepo.findByUserIdAndStatus(userId, "REVIEW");
+		List<Request> r = requestRepo.findByStatusAndUserIdNot("REVIEW", userId);
 		if (r.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Request not found for UserId: " + userId);
 		} else {

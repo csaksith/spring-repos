@@ -21,8 +21,8 @@ public class User {
 	private String lastName;
 	private String phoneNumber;
 	private String email;
-	private boolean Reviewer;
-	private boolean Admin;
+	private boolean reviewer;
+	private boolean admin;
 	public int getId() {
 		return id;
 	}
@@ -66,22 +66,22 @@ public class User {
 		this.email = email;
 	}
 	public boolean isReviewer() {
-		return Reviewer;
+		return reviewer;
 	}
 	public void setReviewer(boolean reviewer) {
-		Reviewer = reviewer;
+		reviewer = reviewer;
 	}
 	public boolean isAdmin() {
-		return Admin;
+		return admin;
 	}
 	public void setAdmin(boolean admin) {
-		Admin = admin;
+		admin = admin;
 	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", Reviewer="
-				+ Reviewer + ", Admin=" + Admin + "]";
+				+ reviewer + ", Admin=" + admin + "]";
 	}
 	
 	

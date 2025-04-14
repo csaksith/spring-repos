@@ -14,5 +14,5 @@ public interface RequestRepo extends JpaRepository<Request, Integer> {
 				.max(Comparator.naturalOrder());
 	}
 
-	List<Request> findByUserIdAndStatus(int userId, String status);
+	List<Request> findByStatusAndUserIdNot(String status, int userId);
 }
