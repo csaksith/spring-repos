@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.mvn",
+    "\\.mvn\\wrapper",
+    "\\bin",
+    "\\bin\\.mvn",
+    "\\bin\\src",
+    "\\bin\\src\\main",
+    "\\bin\\src\\main\\java",
+    "\\bin\\src\\main\\java\\com",
+    "\\src",
+    "\\src\\test"
+  ],
+  "SelectedNode": "\\bin\\src",
+  "PreviewInSolutionExplorer": false
+}

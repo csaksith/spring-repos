@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.bmdb.db.ActorRepo;
 import com.bmdb.model.Actor;
+import com.bmdb.model.Credit;
 
 @CrossOrigin
 @RestController
@@ -35,6 +36,7 @@ public class ActorController {
 					HttpStatus.NOT_FOUND, "Actor not found for id "+id);
 		}
 	}
+	
 	
 	@PostMapping("")
 	public Actor add(@RequestBody Actor actor) {

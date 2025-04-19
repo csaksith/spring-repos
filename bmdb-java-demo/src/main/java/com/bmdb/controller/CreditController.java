@@ -30,7 +30,11 @@ public class CreditController {
 	public List<Credit> getAllCredits() {
 		return creditRepo.findAll();
 	}
-	
+	// new requirement: movie-credits return all crfedits for a movie
+	@GetMapping("/movie-credits/{movieId}")
+	public List<Credit> getCreditsForMovie(@PathVariable int movieId) {
+		return creditRepo.findAllByMovieId(movieId);
+	}
 	@GetMapping("/{id}")
 	public Optional<Credit> getById(@PathVariable int id){
 	Optional<Credit> c = creditRepo.findById(id);
@@ -60,7 +64,12 @@ public class CreditController {
 					HttpStatus.NOT_FOUND, "Movie not found for id "+id);
 		}
 	}
-	
+
+	// new requirement: actor-credits return all credits for ana actor
+	@GetMapping("/actor-films/{actorId}")
+	public List<Credit> getCreditsForActor(@PathVariable int actorId) {
+		return creditRepo.findAllByActorId(actorId);
+	}
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
 		if (creditRepo.existsById(id)) {
